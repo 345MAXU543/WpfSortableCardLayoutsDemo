@@ -4,13 +4,19 @@ A polished WPF reference implementation for horizontal and vertical sortable car
 
 ## Preview
 
-The main window presents two independent examples side by side:
+The main window presents two independent examples side by side.
 
-- **Horizontal Cards** stay compact and support left-to-right reordering.
-  ![WPF sortable card layouts demo](horizon.gif)
-- **Vertical Cards** support top-to-bottom reordering and an animated parameter panel.
-  ![WPF sortable card layouts demo](vertical.gif)
+### Horizontal Cards
 
+Compact cards with mouse-wheel horizontal scrolling, animated drag previews, placeholders, and automatic edge scrolling.
+
+![Horizontal WPF sortable cards demo](horizon.gif)
+
+### Vertical Cards
+
+Sortable vertical cards with animated parameter panels and click-versus-drag handling.
+
+![Vertical WPF sortable cards demo](vertical.gif)
 
 
 ## Features
