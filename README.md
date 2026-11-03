@@ -81,10 +81,6 @@ Horizontal cards intentionally never expand. Clicking one only applies a selecte
 
 The demo uses standard WPF controls, `Canvas`, `ScrollViewer`, `DispatcherTimer`, and built-in animation classes. This keeps the interaction code easy to inspect and reuse.
 
-## Suggested GitHub Topics
-
-`wpf` · `csharp` · `dotnet` · `drag-and-drop` · `sortable` · `card-ui` · `desktop-ui` · `animation` · `code-behind`
-
 ## License
 
 MIT. See [LICENSE](LICENSE).
