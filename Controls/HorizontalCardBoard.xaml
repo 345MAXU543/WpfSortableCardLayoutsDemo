@@ -1,0 +1,112 @@
+<UserControl x:Class="WpfSortableCardLayoutsDemo.Controls.HorizontalCardBoard" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="Transparent"
+             UseLayoutRounding="True">
+    <Border Background="White"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1" CornerRadius="14"
+            Effect="{StaticResource PanelShadow}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="84" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="78" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,0,0,1">
+                <Grid Margin="20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock FontSize="17" FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextPrimaryBrush}"
+                                   Text="Horizontal Cards" />
+                        <TextBlock Margin="0,5,0,0" FontSize="12.5"
+                                   Foreground="{StaticResource TextMutedBrush}"
+                                   Text="Drag a card header to reorder. Use the mouse wheel to scroll horizontally." />
+                    </StackPanel>
+                    <Border Grid.Column="1" Padding="10,5" VerticalAlignment="Center"
+                            Background="{StaticResource AccentSoftBrush}"
+                            BorderBrush="#BFDBFE" BorderThickness="1" CornerRadius="12">
+                        <TextBlock FontSize="10" FontWeight="Bold"
+                                   Foreground="{StaticResource AccentDarkBrush}"
+                                   Text="HORIZONTAL" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Grid x:Name="TrackRegion" Grid.Row="1" Background="#F8FAFC" ClipToBounds="True">
+                <ScrollViewer x:Name="CardsScrollViewer" Background="#F8FAFC" HorizontalScrollBarVisibility="Auto" PanningMode="HorizontalOnly"
+                              PreviewMouseWheel="CardsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Disabled">
+                    <Canvas x:Name="TrackCanvas" Height="238" Background="Transparent" />
+                </ScrollViewer>
+
+                <Canvas x:Name="DragOverlay" IsHitTestVisible="False">
+                    <Border x:Name="DragPreview" Width="190" Height="160" Background="#FFFFFF"
+                            BorderBrush="#2563EB" BorderThickness="2" CornerRadius="10" Opacity="0.94"
+                            Visibility="Collapsed">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="22" Opacity="0.24" ShadowDepth="6" Color="#1E3A8A" />
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="58" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Background="#EFF6FF" CornerRadius="9,9,0,0">
+                                <Grid Margin="12,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="36" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="24" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Width="30" Height="30" VerticalAlignment="Center" Background="#2563EB"
+                                            CornerRadius="7">
+                                        <TextBlock x:Name="PreviewSequenceText" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"
+                                                   Foreground="White" />
+                                    </Border>
+                                    <TextBlock x:Name="PreviewTitleText" Grid.Column="1" VerticalAlignment="Center" FontSize="14"
+                                               FontWeight="SemiBold" Foreground="#0F172A" />
+                                    <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18"
+                                               Foreground="#64748B" Text="⋮⋮" />
+                                </Grid>
+                            </Border>
+                            <StackPanel Grid.Row="1" Margin="14,16">
+                                <TextBlock FontSize="12.5" Foreground="#475569" Text="Sortable item" />
+                                <TextBlock Margin="0,8,0,0" FontSize="11" Foreground="#64748B" Text="Release to place the card" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Canvas>
+
+                <Border x:Name="OutsideWarning" Margin="0,12,0,0" Padding="12,7" HorizontalAlignment="Center"
+                        VerticalAlignment="Top" Background="#FFF7ED" BorderBrush="#FDBA74" BorderThickness="1"
+                        CornerRadius="7" Visibility="Collapsed">
+                    <TextBlock FontSize="11.5" Foreground="#9A3412" Text="Move back into the panel to choose a drop position." />
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="2" Background="White"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,1,0,0" CornerRadius="0,0,14,14">
+                <Grid Margin="20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="34" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="OrderSummaryText" VerticalAlignment="Bottom" FontSize="11.5"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               TextTrimming="CharacterEllipsis" />
+                    <Border Grid.Row="1" Margin="0,7,0,10" Padding="10,6" Background="#F8FAFC"
+                            CornerRadius="7">
+                        <TextBlock x:Name="StatusText" FontSize="11.5"
+                                   Foreground="{StaticResource TextMutedBrush}"
+                                   Text="Ready. Drag any card header to begin." TextTrimming="CharacterEllipsis" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

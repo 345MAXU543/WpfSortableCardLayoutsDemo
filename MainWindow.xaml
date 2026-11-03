@@ -1,0 +1,89 @@
+<Window x:Class="WpfSortableCardLayoutsDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WpfSortableCardLayoutsDemo.Controls"
+        mc:Ignorable="d"
+        Title="WPF Sortable Card Layouts Demo"
+        Width="1600"
+        Height="900"
+        MinWidth="1200"
+        MinHeight="700"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource AppBackgroundBrush}"
+        FontFamily="Segoe UI"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="104" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="42" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="White"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,0,1">
+            <Grid Margin="28,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="39" Height="39" Background="{StaticResource AccentBrush}" CornerRadius="10" Margin="0,0,13,0">
+                        <TextBlock Text="↕" Foreground="White" FontSize="23" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Sortable Card Layouts"
+                                   Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontSize="22"
+                                   FontWeight="SemiBold" />
+                        <TextBlock Text="Horizontal and vertical drag-and-drop card examples for WPF"
+                                   Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="12.5"
+                                   Margin="0,3,0,0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        x:Name="ResetButton"
+                        Content="↶  Reset Demo"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="ResetButton_Click"
+                        VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="24,18,24,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="620" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="2*" MinWidth="420" />
+            </Grid.ColumnDefinitions>
+
+            <controls:HorizontalCardBoard x:Name="HorizontalBoard" Grid.Column="0" />
+
+            <Border Grid.Column="1" Width="1" Background="#CBD5E1" HorizontalAlignment="Center" Margin="0,8" />
+
+            <controls:VerticalCardBoard x:Name="VerticalBoard" Grid.Column="2" />
+        </Grid>
+
+        <Border Grid.Row="2" Background="#FFFFFF" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
+            <Grid Margin="28,0">
+                <TextBlock Text="No third-party UI libraries · Independent horizontal and vertical examples"
+                           Foreground="{StaticResource TextMutedBrush}"
+                           FontSize="12"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Esc cancels the active drag"
+                           Foreground="{StaticResource TextMutedBrush}"
+                           FontSize="12"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
